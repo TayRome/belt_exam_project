@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quotes</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'quotes/quotes.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<h2>Welcome {{ super_user.name }} (aka: {{ super_user.alias }})!</h2>
+			<form action="{% url 'logout' %}" method="POST">
+			{% csrf_token %}
+			<input type="submit" value="Logout">
+			</form>
+		</div>
+		<div class="container">
+			<div class="left_side">
+			<h3>Quotable Quotes:</h3>
+				{% for quote in quotes %}
+				<div class="quotable_quotes">
+					<p>{{ quote.author }}:</p> 
+					<p>{{ quote.quote }}</p>
+					<p>Posted by <a href="/users/{{ quote.user.id }}">{{ quote.user.name }}</a></p>
+					<form action="{% url 'add_favorite' quote.id %}">
+					<input type="hidden" name="{{quote.id}}">
+					<button type="submit">Add to My List</button>
+					</form>
+				</div>
+				{% endfor %}
+			</div>
+			<div class="right_side">
+			<h3>Favorite Quotes:</h3>
+				<div class="favorites">
+					{% for favorite in favorites %}
+					<div class="quotable_quotes">
+					<p>{{ favorite.quote.author }}</p> 
+					<p>{{ favorite.quote.quote }}</p>
+					<p>Posted by <a href="/users">{{ favorite.quote.user.name }}</a></p>
+					<form action="{% url 'remove_favorite' favorite.id %}">
+					<input type="hidden" name="{{favorite.id}}">
+					<button type="submit">Remove From My List</button>
+					</form>
+				</div>
+					{% endfor%}
+				<div class="post_quote">
+					<h4>Contribute a Quote</h4>
+					<form action="{% url 'post_quote' %}" method='POST'>
+					{% csrf_token %}
+					<table>
+						<tr>
+							<td><label for="author">Quoted By:</label></td>
+							<td><input type="text" placeholder='quote author' name="author"></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><label for="quote">Message:</label></td>
+							<td><textarea name="quote" rows="4" cols="50">quote text goes here...</textarea></td>
+							<td><input type="submit" value="Submit"></td></form>
+						</tr>
+					</table>
+				</div>
+				<div class="error_messages">
+				{% if messages %}
+				<ul>
+				{% for message in messages %}
+					<li>{{ message }}</li>
+				{% endfor %}
+				</ul>
+				{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

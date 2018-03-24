@@ -1,0 +1,105 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background: #485563; 
+	color: #f2f2f2;
+}
+footer {
+	position: fixed;
+	bottom: 0;
+	padding-left: 14px;
+}
+.container {
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+}
+.box {
+	flex-basis: 25%;
+}
+.selectors {
+	flex-basis: 25%;
+	padding: 30px 0;
+	background-color: rgb(25, 65, 92);
+	color: #f2f2f2;
+	text-align: center;
+	transition: all 1s;
+}
+.selectors:hover {
+	background-color: #ddd;
+	color: black; 
+}
+.selectors:hover + .explain {
+	background-color: #ddd;
+	color: black;
+	opacity: 1;
+	transform: translateY(0px);
+}
+.container .selectors a {
+	text-decoration: none;
+	color: white;
+}
+.explain {
+	flex-basis: 25%;
+	text-align: center;
+	font-size: 14px;
+	font-family: 'Times New Roman', Times, serif;
+	background-color: rgb(25, 65, 92);
+	color: #f2f2f2;
+	border-radius: 0 0 10px 10px;
+	opacity: 0;
+	transition: all 1s;
+	transform: translateY(-30px);
+	padding: 10px;
+}
+.header {
+	display: flex;
+	justify-content: space-between;
+}
+.header h1 {
+	font-family: 'Michroma', sans-serif;
+}
+.header input {
+	margin: 20px 20px;
+	outline: none;
+	border: none;
+	background: none;
+	color: white;
+}
+.header input:hover {
+
+	animation-name: grow;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	animation-duration: 1s;
+}
+.landing_title {
+	margin: 0 10px;
+	margin-top: 15px;
+}
+.content {
+	display: flex;
+	justify-content: center;
+}
+.registration_divider {
+	width: 1px;
+	margin: 0 50px;
+	border-right: 2px solid grey;
+}
+.logged_in {
+	display: none;
+}
+.welcome {
+	text-align: center;
+	transition-duration: 1s;
+	animation-name: slide_up;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+}
+.error_messages{
+	margin: 0 auto;
+	color: red;
+	text-align: center;
+}

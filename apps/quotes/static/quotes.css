@@ -1,0 +1,39 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+.header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 30px;
+}
+.quotable_quotes {
+	border: 2px dashed black;
+	margin: 10px;
+	width: 400px;
+	vertical-align: top;
+	display: flex;
+	flex-direction: column;
+}
+.post_quote {
+	border: 2px dashed red;
+	margin: 10px;
+	width: 400px;
+}
+.container {
+	display: flex;
+	justify-content: space-between;
+}
+.left_side {
+	display: inline-block;
+}
+.right_side{
+	display: inline-block;
+}
+.favorites {
+	vertical-align: top;
+	
+}
+.error_messages {
+	color: red;
+}

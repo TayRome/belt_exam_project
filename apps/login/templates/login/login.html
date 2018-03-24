@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'login/login.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+	<div class="header">
+	<h1 class="landing_title">Welcome!</h1>
+		<div class="registration_form">
+		<h4>Register Now</h4>
+		<table>
+		<form action="{% url 'register' %}" method="post">
+			{% csrf_token %}
+			<tr>
+				<td><label for="name">Name:</label></td>
+				<td><input type="text" placeholder="name" name="name"></td>
+			</tr>
+			<tr>
+				<td><label for="alias">Alias:</label></td>
+				<td><input type="text" placeholder="alias" name="alias"></td>
+			</tr>
+			<tr>
+				<td><label for="email">Email:</label></td>
+				<td><input type="text" placeholder="email"  name="email"></td>
+			</tr>
+			<tr>
+				<td><label for="password">Password:</label></td>
+				<td><input type="password" placeholder="password" name="password"></td>
+			</tr>
+			<tr>
+				<td><label for="cpassword">PW Confirm:</label></td>
+				<td><input type="password" placeholder="confirm password" name="cpassword"></td>
+			</tr>
+			<tr>
+				<td><label for="birthday">Birthday:</label></td>
+				<td><input type="date" placeholder="" name="birthday" required></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Register"></td>
+			</tr>
+		</form> 
+		</table>
+		</div>
+		<div class="registration_divider"></div>
+		<div class="login_form {{request.session.status}}">
+			<h4 class="(( session['status'] ))">Log in</h4>
+			<form action="{% url 'login' %}" method='POST'>
+			{% csrf_token %}
+			<table>
+				<tr>
+					<td><label for="email">Email:</label></td>
+					<td><input type="text" placeholder='email' name="email" value=""></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><label for="password">Password:</label></td>
+					<td><input type="password" placeholder='password' name="password"></td>
+					<td><input type="submit" value="Login"></td></form>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="error_messages">
+		{% if messages %}
+			<ul>
+				{% for message in messages %}
+					<li>{{ message }}</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	</div>
+	<!--  -->
+	<footer>
+		<p>Coding is so hard!...</p>
+	</footer>
+</body>
+</html>

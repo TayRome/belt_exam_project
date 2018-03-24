@@ -1,0 +1,17 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 30px;
+}
+.quotable_quotes {
+	border: 2px dashed black;
+	margin: 10px;
+	width: 400px;
+	vertical-align: top;
+	display: flex;
+	flex-direction: column;
+}
